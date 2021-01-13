@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    defaultAutoCommit: true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 20
+    keepAlive: true
+    maxActive: 300
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 20
+    poolPreparedStatements: true
+    spring:
+      datasource:
+        filters: stat,wall,log4j
+    testOnBorrow: true
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenConnectErrorMillis: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://172.16.1.145:3306/ona?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: ona
+    password: Ona@123456
+    validationQuery: SELECT 1
+    validationQueryTimeout: 3
