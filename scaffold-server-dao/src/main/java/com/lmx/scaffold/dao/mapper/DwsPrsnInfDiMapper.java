@@ -1,7 +1,7 @@
-package com.lmx.scaffold.mapper;
+package com.lmx.scaffold.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lmx.scaffold.entity.DwsPrsnInfDi;
+import com.lmx.scaffold.dao.entity.DwsPrsnInfDi;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.lmx.scaffold.entity;
+package com.lmx.scaffold.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;

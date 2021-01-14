@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.lmx.scaffold.mapper")
+@MapperScan("com.lmx.scaffold.dao.mapper")
 public class ApiApplication {
 
     public static void main(String[] args) {

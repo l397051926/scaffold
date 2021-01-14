@@ -1,6 +1,6 @@
 package com.lmx.scaffold.api.service;
 
-import com.lmx.scaffold.mapper.DwsPrsnInfDiMapper;
+import com.lmx.scaffold.dao.mapper.DwsPrsnInfDiMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

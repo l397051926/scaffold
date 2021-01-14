@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lmx.scaffold.mapper.DwsPrsnInfDiMapper">
+<mapper namespace="com.lmx.scaffold.dao.mapper.DwsPrsnInfDiMapper">
 
-    <select id="querByuserIds" resultType="com.lmx.scaffold.entity.DwsPrsnInfDi">
+    <select id="querByuserIds" resultType="com.lmx.scaffold.dao.entity.DwsPrsnInfDi">
         select *
         from dws_prsn_inf_di
         where userid in
@@ -11,17 +11,17 @@
         </foreach>
     </select>
 
-    <select id="queryByUserId" resultType="com.lmx.scaffold.entity.DwsPrsnInfDi">
+    <select id="queryByUserId" resultType="com.lmx.scaffold.dao.entity.DwsPrsnInfDi">
         select *
         from dws_prsn_inf_di
         where userid =#{userId} limit 1
     </select>
-    <select id="queryEmployId" resultType="com.lmx.scaffold.entity.DwsPrsnInfDi">
+    <select id="queryEmployId" resultType="com.lmx.scaffold.dao.entity.DwsPrsnInfDi">
         select *
         from dws_prsn_inf_di
         where work_no =#{employId} limit 1
     </select>
-    <select id="queryAllUser" resultType="com.lmx.scaffold.entity.DwsPrsnInfDi">
+    <select id="queryAllUser" resultType="com.lmx.scaffold.dao.entity.DwsPrsnInfDi">
         select *
         from dws_prsn_inf_di
         where  statistics_date = (select max(statistics_date) from dws_prsn_inf_di)
