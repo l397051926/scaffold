@@ -20,6 +20,26 @@ import java.sql.*;
 public class DBInitDao extends AbstractBaseDao {
 
     public static final Logger logger = LoggerFactory.getLogger(DBInitDao.class);
+    /**
+     * sql文件 存储位置
+     */
+    private static final String initSqlPath = "/sql/init/release-1.0.0_schema/mysql/";
+    /**
+     *  初始化数据库时使用的mysql jdbc driver
+     */
+    private static final String mysqlDriver = "com.mysql.jdbc.Driver";
+    /**
+     * 判断是否需要初始化数据表 所依赖的表名
+     */
+    private static final String initTableEnable = "bi_dm_extract_ident";
+    /**
+     * dml sql 语句文件
+     */
+    private static final String dmlSql = "dashboard_dml.sql";
+    /**
+     * ddl sql 语句文件
+     */
+    private static final String ddlSql = "dashboard_ddl.sql";
     private static final String rootDir = System.getProperty("user.dir");
     protected static final DruidDataSource dataSource = getDataSource();
 
@@ -48,9 +68,6 @@ public class DBInitDao extends AbstractBaseDao {
      * init schema
      */
     public void initSchema(){
-
-        String initSqlPath = "";
-        initSqlPath = "/sql/init/release-1.0.0_schema/mysql/";
         initSchema(initSqlPath);
     }
 
@@ -64,7 +81,7 @@ public class DBInitDao extends AbstractBaseDao {
         // 初始化数据库
         String dataBase = runInitDataBase();
 
-        if (isExistsTable("bi_dm_extract_ident", dataBase)){
+        if (isExistsTable(initTableEnable, dataBase)){
             logger.info("表存在 不继续创建数据库了");
             return;
         }
@@ -81,7 +98,7 @@ public class DBInitDao extends AbstractBaseDao {
      * init data bases
      */
     private String runInitDataBase() {
-        String mysqlDriver = "com.mysql.jdbc.Driver";
+
         String url = dataSource.getUrl();
         String userName = dataSource.getUsername();
         String passWord = dataSource.getPassword();
@@ -121,7 +138,7 @@ public class DBInitDao extends AbstractBaseDao {
         if (StringUtils.isEmpty(rootDir)) {
             throw new RuntimeException("Environment variable user.dir not found");
         }
-        String mysqlSQLFilePath = rootDir + initSqlPath + "dashboard_dml.sql";
+        String mysqlSQLFilePath = rootDir + initSqlPath + dmlSql;
         try {
             conn = dataSource.getConnection();
             conn.setAutoCommit(false);
@@ -165,7 +182,7 @@ public class DBInitDao extends AbstractBaseDao {
             throw new RuntimeException("Environment variable user.dir not found");
         }
         //String mysqlSQLFilePath = rootDir + "/sql/create/release-1.0.0_schema/mysql/dashboard_ddl.sql";
-        String mysqlSQLFilePath = rootDir + initSqlPath + "dashboard_ddl.sql";
+        String mysqlSQLFilePath = rootDir + initSqlPath + ddlSql;
         try {
             conn = dataSource.getConnection();
             // Execute the dashboard_ddl.sql script to create the table structure of mrst

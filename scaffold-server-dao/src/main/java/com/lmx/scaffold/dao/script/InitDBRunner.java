@@ -1,7 +1,5 @@
 package com.lmx.scaffold.dao.script;
 
-import java.sql.SQLException;
-
 /**
  * @author:
  * @description: 数据库初始化脚本
@@ -9,7 +7,7 @@ import java.sql.SQLException;
  */
 public class InitDBRunner {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) {
         DBInitDao dbInitDao = new DBInitDao();
         dbInitDao.initSchema();
     }
